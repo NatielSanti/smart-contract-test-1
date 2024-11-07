@@ -15,13 +15,13 @@ contract SimpleBank {
 
     // Функция для внесения средств на контракт
     function deposit() public payable {
-        require(msg.value > 0, "Нельзя внести 0");
+        require(msg.value > 0, "not allowed to deposit less 0");
         balances[msg.sender] += msg.value;
     }
 
     // Функция для снятия средств
     function withdraw(uint amount) public {
-        require(amount <= balances[msg.sender], "Недостаточно средств");
+        require(amount <= balances[msg.sender], "Not anought amount");
         balances[msg.sender] -= amount;
         payable(msg.sender).transfer(amount);
     }
